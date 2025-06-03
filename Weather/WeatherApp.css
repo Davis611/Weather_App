@@ -1,36 +1,285 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    transition: background 0.7s;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    background: #f0f0f0;
+    justify-content: flex-start;
 }
+
+/* Responsive Container */
 .container {
-    text-align: center;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    width: 100vw;
+    max-width: 420px;
+    margin: 32px auto 0 auto;
+    padding: 32px 18px 24px 18px;
+    background: rgba(255,255,255,0.97);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.13);
+    box-sizing: border-box;
 }
+
+/* Input and Button */
 input, button {
-    padding: 10px;
+    width: 100%;
+    max-width: 350px;
+    box-sizing: border-box;
+    padding: 14px;
     margin: 10px 0;
-    width: calc(100% - 20px);
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
 }
+input:focus {
+    border: 1.5px solid #007BFF;
+    box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+}
+button {
+    background: linear-gradient(90deg, #007BFF 60%, #0056b3 100%);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.1s;
+}
+button:hover {
+    background: linear-gradient(90deg, #0056b3 60%, #007BFF 100%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* Weather Container */
 .weather-container {
-    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 24px 12px;
     background: #007BFF;
     color: white;
-    padding: 15px;
-    border-radius: 8px;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    font-size: 1.1rem;
 }
+.weather-container .weather-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+.weather-container h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+.weather-container .temp {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+}
+.weather-container .desc {
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+.weather-container .details {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* Weekly Forecast Section */
+#weeklyForecast {
+    width: 100%;
+    max-width: 380px;
+    margin: 18px auto 0 auto;
+    padding: 18px 10px 10px 10px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.forecast-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+    padding: 8px 0;
+    border-bottom: 1px solid #eaeaea;
+}
+.forecast-row:last-child {
+    border-bottom: none;
+}
+.forecast-day {
+    font-weight: 500;
+    width: 80px;
+}
+.forecast-icon {
+    width: 36px;
+    height: 36px;
+}
+.forecast-temp {
+    font-size: 1.1rem;
+    font-weight: 600;
+    width: 60px;
+    text-align: right;
+}
+
+/* Map Section */
+#mapSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 380px;
+    margin: 30px auto 0 auto;
+    padding: 18px 5px 10px 5px;
+    box-sizing: border-box;
+    background: rgba(255,255,255,0.92);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+}
+
+/* Responsive Typography */
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+.weather-container h2 {
+    font-size: 1.3rem;
+}
+.weather-container .temp {
+    font-size: 2rem;
+}
+
+/* Weather Effects Container */
+#weather-effects {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Responsive Weather Effects */
+#weather-effects {
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    position: fixed;
+    top: 0; left: 0;
+    z-index: 0;
+}
+
+/* Rain Animation */
+.rain #weather-effects {
+    background: none;
+}
+.rain-drop {
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background: rgba(255,255,255,0.4);
+    bottom: 100%;
+    animation: rain-fall 0.7s linear infinite;
+}
+@keyframes rain-fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+/* Thunderstorm Animation */
+.thunderstorm #weather-effects {
+    background: none;
+}
+.thunder {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(255,255,255,0.15);
+    animation: thunder-flash 2s infinite;
+    opacity: 0;
+}
+@keyframes thunder-flash {
+    0%, 97%, 100% { opacity: 0; }
+    98% { opacity: 1; }
+    99% { opacity: 0; }
+}
+
+/* Snow Animation */
+.snow #weather-effects {
+    background: none;
+}
+.snow-flake {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: snow-fall 3s linear infinite;
+}
+@keyframes snow-fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+/* Mobile Styles */
 @media (max-width: 600px) {
     .container {
-        width: 95%;
+        max-width: 99vw;
+        padding: 12px 2vw;
+        gap: 10px;
     }
+    .weather-container, #mapSection, #weeklyForecast {
+        max-width: 98vw;
+        font-size: 1rem;
+        padding: 12px 2vw;
+    }
+    .weather-container .weather-icon {
+        width: 60px;
+        height: 60px;
+    }
+    .weather-container .temp {
+        font-size: 1.5rem;
+    }
+    #weatherMap {
+        min-height: 120px;
+        max-height: 200px;
+    }
+    h1 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Dark Theme */
+body.dark {
+    background: linear-gradient(135deg, #232526 0%, #414345 100%);
+    color: #f1f1f1;
+}
+body.dark .container,
+body.dark #weeklyForecast,
+body.dark #mapSection {
+    background: rgba(30,30,40,0.97);
+    color: #f1f1f1;
+}
+body.dark .weather-container {
+    background: #222e50;
+    color: #f1f1f1;
 }

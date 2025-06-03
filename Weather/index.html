@@ -4,19 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
-    <style>
-       
-    </style>
+    <link rel="stylesheet" href="WeatherApp.css">
 </head>
 <body>
+    <div id="weather-effects"></div>
     <div class="container">
         <h1>Weather App</h1>
         <input type="text" id="city" placeholder="Enter city name">
         <button id="getWeather">Get Weather</button>
+        <button id="darkModeToggle" style="margin-bottom:10px;">Toggle Dark Mode</button>
         <div id="weatherInfo"></div>
+        <div id="mapSection">
+            <h2>Live Weather Radar</h2>
+            <iframe
+                id="weatherMap"
+                width="100%"
+                height="350"
+                frameborder="0"
+                src=""
+                allowfullscreen
+                style="border-radius: 10px; margin-top: 15px;"
+            ></iframe>
+        </div>
+        <div id="weeklyForecast"></div>
+        <div id="hourlyForecast"></div>
+        <div id="airQuality"></div>
+        <div id="uvIndex"></div>
+        <div id="weatherTip"></div>
+        <div id="favorites"></div>
+        <div id="alerts"></div>
     </div>
-    <script>
-      
-    </script>
+    <script src="WeatherApp.js"></script>
 </body>
 </html>
