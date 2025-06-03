@@ -1,4 +1,4 @@
-# Weather App
+# Atmo
 
 A sleek, responsive weather dashboard built with HTML, CSS, and JavaScript, powered by a Node.js/Express backend proxy for secure API access.  
 Features include current weather, hourly and weekly forecasts, air quality, UV index, weather-based tips, dark mode, animated backgrounds, location auto-detect, favorite cities, and severe weather alerts.
