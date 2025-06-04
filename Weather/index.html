@@ -7,8 +7,17 @@
     <link rel="stylesheet" href="WeatherApp.css">
 </head>
 <body>
+    <div id="welcomeModal" class="modal">
+        <div class="modal-content">
+            <img src="images/atmologo.png" alt="Weather App Logo" style="width:100px; margin-bottom:20px;">
+            <h2>Welcome to Weather App</h2>
+            <p>Curious about the weather? Enter any city to see live conditions, forecasts.</p>
+            <input type="text" id="welcomeCity" placeholder="Enter city name">
+            <button id="welcomeSearch">Search</button>
+        </div>
+    </div>
     <div id="weather-effects"></div>
-    <div class="container">
+    <div class="container" style="display:none;">
         <h1>Weather App</h1>
         <input type="text" id="city" placeholder="Enter city name">
         <button id="getWeather">Get Weather</button>
@@ -35,5 +44,21 @@
         <div id="alerts"></div>
     </div>
     <script src="WeatherApp.js"></script>
+    <script>
+        // Simple modal logic
+        document.getElementById('welcomeSearch').onclick = function() {
+            const city = document.getElementById('welcomeCity').value.trim();
+            if(city) {
+                document.getElementById('city').value = city;
+                document.getElementById('welcomeModal').style.display = 'none';
+                document.querySelector('.container').style.display = '';
+                document.getElementById('getWeather').click();
+            }
+        };
+        // Optional: allow Enter key
+        document.getElementById('welcomeCity').addEventListener('keydown', function(e) {
+            if(e.key === 'Enter') document.getElementById('welcomeSearch').click();
+        });
+    </script>
 </body>
 </html>
